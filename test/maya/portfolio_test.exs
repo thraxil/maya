@@ -25,5 +25,11 @@ defmodule Maya.PortfolioTest do
       image = image_fixture()
       assert Portfolio.list_images() == [image]
     end
+
+    test "get_image/1 returns image" do
+      image = image_fixture()
+      res = Portfolio.get_image!(image.id)
+      assert res.title == image.title
+    end
   end
 end

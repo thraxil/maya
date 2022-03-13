@@ -14,4 +14,8 @@ defmodule Maya.Portfolio do
     |> Image.changeset(attrs)
     |> Repo.insert()
   end
+
+  def get_image!(id) do
+    Repo.get!(Image, id)
+  end
 end
