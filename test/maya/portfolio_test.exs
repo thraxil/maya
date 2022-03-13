@@ -30,6 +30,11 @@ defmodule Maya.PortfolioTest do
       image = image_fixture()
       res = Portfolio.get_image!(image.id)
       assert res.title == image.title
+      assert res.slug == image.slug
+      assert res.description == image.description
+      assert res.medium == image.medium
+      assert res.ahash == image.ahash
+      assert res.extension == image.extension
     end
   end
 end

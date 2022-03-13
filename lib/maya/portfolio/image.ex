@@ -4,12 +4,17 @@ defmodule Maya.Portfolio.Image do
 
   schema "images" do
     field :title, :string
+    field :slug, :string
+    field :description, :string
+    field :medium, :string
+    field :ahash, :string
+    field :extension, :string
     timestamps()
   end
 
   def changeset(image, attrs \\ %{}) do
     image
-    |> cast(attrs, [:title])
-    |> validate_required([:title])
+    |> cast(attrs, [:title, :slug, :description, :medium, :ahash, :extension])
+    |> validate_required([:title, :slug, :extension])
   end
 end
