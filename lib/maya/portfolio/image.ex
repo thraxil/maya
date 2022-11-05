@@ -9,6 +9,8 @@ defmodule Maya.Portfolio.Image do
     field :medium, :string
     field :ahash, :string
     field :extension, :string
+
+    many_to_many :galleries, Maya.Portfolio.Gallery, join_through: "galleryimages", on_replace: :delete
     timestamps()
   end
 

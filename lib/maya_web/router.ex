@@ -18,6 +18,9 @@ defmodule MayaWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/galleries/new", PageController, :new_gallery
+    get "/galleries/:slug", PageController, :show_gallery
+    post "/galleries/", PageController, :create_gallery
   end
 
   # Other scopes may use custom stacks.
