@@ -1,0 +1,16 @@
+<%= img_tag(image_large_url(@image)) %>
+
+<h2 itemprop="name"><%= @image.title %></h2>
+
+
+<%= if @image.medium do %>
+<b>medium:</b> <%= @image.medium %>
+<% end %>
+
+
+<span class="invisible" itemprop="creator" itemscope
+			itemtype="http://schema.org/Person">
+  <span itemprop="name">
+		Anders Pearson
+	</span>
+</span>

@@ -3,6 +3,6 @@ defmodule MayaWeb.PageControllerTest do
 
   test "GET /", %{conn: conn} do
     conn = get(conn, "/")
-    assert html_response(conn, 200) =~ "Images"
+    assert html_response(conn, 200) =~ "myopica"
   end
 end

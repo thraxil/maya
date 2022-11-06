@@ -88,6 +88,11 @@
   cursor: pointer;
 }
 
+.image {
+    float: left;
+    margin: 0.5em;
+}
+
 .gallery {
     border: 1px solid #000;
     padding: 1em;

@@ -21,6 +21,10 @@ defmodule MayaWeb.Router do
     get "/galleries/new", PageController, :new_gallery
     get "/galleries/:slug", PageController, :show_gallery
     post "/galleries/", PageController, :create_gallery
+
+    get "/images/new", PageController, :new_image
+    get "/images/:slug", PageController, :show_image
+    post "/images/", PageController, :create_image
   end
 
   # Other scopes may use custom stacks.

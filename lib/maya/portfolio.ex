@@ -10,6 +10,14 @@ defmodule Maya.Portfolio do
     Repo.all(Image)
   end
 
+  def newest_images(images_per_page, page \\ 1) do
+    q = from i in Image,
+      order_by: [desc: :inserted_at],
+      limit: ^images_per_page,
+      offset: ^((page - 1) * images_per_page)
+    Repo.all(q)
+  end
+
   def count_images do
     Repo.aggregate(Image, :count, :id)
   end
@@ -44,5 +52,9 @@ defmodule Maya.Portfolio do
 
   def get_gallery_by_slug!(slug) do
     Repo.get_by!(Gallery, slug: slug)
+  end
+
+  def get_image_by_slug!(slug) do
+    Repo.get_by!(Image, slug: slug)
   end
 end
