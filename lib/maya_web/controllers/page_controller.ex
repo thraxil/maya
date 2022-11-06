@@ -48,7 +48,14 @@ defmodule MayaWeb.PageController do
 
   def show_image(conn, %{"slug" => slug}) do
     image = Portfolio.get_image_by_slug!(slug)
-    render conn, "image.html", image: image
+    {has_prev, prev_image} = Portfolio.prev_image(image)
+    {has_next, next_image} = Portfolio.next_image(image)    
+    render conn, "image.html",
+      image: image,
+      has_prev: has_prev,
+      prev_image: prev_image,
+      has_next: has_next,
+      next_image: next_image
   end
 
   def new_image(conn, _params) do

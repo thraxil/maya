@@ -57,4 +57,33 @@ defmodule Maya.Portfolio do
   def get_image_by_slug!(slug) do
     Repo.get_by!(Image, slug: slug)
   end
+
+  defp _prev_image(image) do
+    q = from i in Image,
+      where: i.inserted_at > ^image.inserted_at,
+      order_by: [asc: :inserted_at],
+      limit: 1
+    Repo.one(q)
+  end
+  
+  def prev_image(image) do
+    case _prev_image(image) do
+      nil -> {false, nil}
+      i -> {true, i}
+    end
+  end
+  defp _next_image(image) do
+    q = from i in Image,
+      where: i.inserted_at < ^image.inserted_at,
+      order_by: [desc: :inserted_at],
+      limit: 1
+    Repo.one(q)
+  end
+  
+  def next_image(image) do
+    case _next_image(image) do
+      nil -> {false, nil}
+      i -> {true, i}
+    end
+  end
 end
