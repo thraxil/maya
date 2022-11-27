@@ -25,11 +25,35 @@ defmodule Maya.Portfolio do
   def count_galleries do
     Repo.aggregate(Gallery, :count, :id)
   end
-  
-  def create_image(attrs \\ %{}) do
+
+  def _valid_extension(".jpg"), do: ".jpg"
+  def _valid_extension(".jpeg"), do: ".jpg"
+  def _valid_extension(".png"), do: ".png"
+  def _valid_extension(".gif"), do: ".gif"
+  def _valid_extension(_), do: ".jpg"
+
+  # expects ahash and extension to be set
+  def raw_create_image(attrs \\ %{}) do
     %Image{}
     |> Image.changeset(attrs)
     |> Repo.insert()
+  end
+  
+  def create_image(attrs \\ %{}) do
+    upload = attrs["image"]
+    extension = _valid_extension(String.downcase(Path.extname(upload.filename)))
+    key = Application.fetch_env!(:maya, :reticulum_key)
+    url = Application.fetch_env!(:maya, :reticulum_base)
+
+    # send it to reticulum
+    form = [{:file, upload.path, {"form-data", [{"name", "image"}, {"filename", "image" <> extension}]}, []}, {"key", key}]
+    {:ok, %HTTPoison.Response{body: body}} = HTTPoison.post(url, {:multipart, form}, [])
+    %{"hash" => hash} = Jason.decode! body
+
+    attrs = Map.put(attrs, "ahash", hash)
+    attrs = Map.put(attrs, "extension", extension)
+
+    raw_create_image(attrs)
   end
 
   def get_image!(id) do

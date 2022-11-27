@@ -19,7 +19,7 @@ defmodule Maya.PortfolioTest do
       {:ok, image} =
         attrs
         |> Enum.into(@valid_attrs)
-        |> Portfolio.create_image()
+        |> Portfolio.raw_create_image()
 
       image
     end
