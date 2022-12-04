@@ -12,6 +12,8 @@
   <body>
     <header>
       <h1 id="masthead"><a href="/">myopica</a></h1>
+    </header>
+    <%= @inner_content %>
       <section class="container">
         <nav>
           <ul>
@@ -22,7 +24,12 @@
           <%= render "_user_menu.html", assigns %>
         </nav>
       </section>
-    </header>
-    <%= @inner_content %>
+    <p>
+      <a rel="license"
+         href="http://creativecommons.org/publicdomain/zero/1.0/">
+        <img src="https://licensebuttons.net/p/zero/1.0/80x15.png" style="border-style: none;" alt="CC0" />
+      </a>
+    </p>
+
   </body>
 </html>

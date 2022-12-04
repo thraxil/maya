@@ -1,3 +1,5 @@
+<p>Myopica is the art of <a href="mailto:anders+myopica@thraxil.org">Anders Pearson</a>.</p>
+
 <%= for image <- @images do %>
     <div class="image">
       <%= link to: Routes.page_path(@conn, :show_image, image.slug) <> "#img1" do %>

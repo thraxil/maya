@@ -95,7 +95,8 @@
 
 #masthead {
     display: block;
-    background: #ccc;
+    background: #eee;
+    border-bottom: #000 solid 1px;
 }
 
 #masthead a {
