@@ -15,7 +15,9 @@
         <nav>
           <ul>
             <li><a href="/">myopica</a></li>
-            <li><a href="/images/new">+</a></li>            
+<%= if @current_user do %>
+            <li><a href="/images/new">+</a></li>
+<% end %>
           </ul>
           <%= render "_user_menu.html", assigns %>
         </nav>
