@@ -1,0 +1,1 @@
+call "%~dp0\maya" eval Maya.Release.migrate
