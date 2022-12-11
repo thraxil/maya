@@ -14,9 +14,15 @@ defmodule MayaWeb.PageController do
     max_page = (div images_count, images_per_page) + 1
     images = Maya.Portfolio.newest_images(images_per_page, min(page, max_page))
     has_next = (page * images_per_page) <= images_count
+
+    # for preloading
+    next_page_images = Maya.Portfolio.newest_images(images_per_page, min(page + 1, max_page))
+    prev_page_images = Maya.Portfolio.newest_images(images_per_page, max(page - 1, 1))
     
     render conn, "index.html",
       images: images,
+      next_page_images: next_page_images,
+      prev_page_images: prev_page_images,
       page: min(page, max_page),
       prev_page: max(page - 1, 1),
       has_prev: page > 1,

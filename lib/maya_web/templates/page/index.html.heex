@@ -19,6 +19,17 @@ var preloader = function () {
 var pre<%= idx %> = new Image();
 pre<%= idx %>.src = "<%= image_large_url(image) %>";
 <% end %>
+
+        <%= for {image, idx} <- Enum.with_index(@next_page_images) do %>
+var next_pre<%= idx %> = new Image();
+next_pre<%= idx %>.src = "<%= image_thumb_url(image) %>";
+<% end %>
+
+        <%= for {image, idx} <- Enum.with_index(@prev_page_images) do %>
+var prev_pre<%= idx %> = new Image();
+prev_pre<%= idx %>.src = "<%= image_thumb_url(image) %>";
+<% end %>
+
 };
 
 document.onload = preloader();
