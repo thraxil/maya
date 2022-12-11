@@ -12,3 +12,14 @@
 <%= if @has_prev do %><%= link "<< prev", to: Routes.page_path(@conn, :index, page: @prev_page) %><% else %>&lt;&lt; prev<% end %>
 [page <%= @page %>]
 <%= if @has_next do %><%= link "next >>", to: Routes.page_path(@conn, :index, page: @next_page) %><% else %>next &gt;&gt;<% end %>
+
+<script type="text/javascript">
+var preloader = function () {
+        <%= for {image, idx} <- Enum.with_index(@images) do %>
+var pre<%= idx %> = new Image();
+pre<%= idx %>.src = "<%= image_large_url(image) %>";
+<% end %>
+};
+
+document.onload = preloader();
+</script>
