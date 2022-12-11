@@ -5,16 +5,15 @@ defmodule MayaWeb.PageController do
   
   use MayaWeb, :controller
 
-  @images_per_page 10
-  
   def index(conn, _params) do
+    images_per_page = Application.fetch_env!(:maya, :images_per_page)
     defaults = %{"page" => "1"}
     params = Map.merge(defaults, conn.query_params)
     {page, _} = Integer.parse(params["page"])
     images_count = Maya.Portfolio.count_images()
-    max_page = (div images_count, @images_per_page) + 1
-    images = Maya.Portfolio.newest_images(@images_per_page, min(page, max_page))
-    has_next = (page * @images_per_page) <= images_count
+    max_page = (div images_count, images_per_page) + 1
+    images = Maya.Portfolio.newest_images(images_per_page, min(page, max_page))
+    has_next = (page * images_per_page) <= images_count
     
     render conn, "index.html",
       images: images,

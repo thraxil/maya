@@ -17,6 +17,8 @@ config :maya, MayaWeb.Endpoint,
   pubsub_server: Maya.PubSub,
   live_view: [signing_salt: "LeyVrrwU"]
 
+config :maya, images_per_page: 20
+
 # Configures the mailer
 #
 # By default it uses the "Local" adapter which stores the emails
