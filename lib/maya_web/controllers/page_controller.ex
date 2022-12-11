@@ -56,6 +56,7 @@ defmodule MayaWeb.PageController do
     {has_prev, prev_image} = Portfolio.prev_image(image)
     {has_next, next_image} = Portfolio.next_image(image)    
     render conn, "image.html",
+      page_title: image.title,
       image: image,
       has_prev: has_prev,
       prev_image: prev_image,
