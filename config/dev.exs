@@ -74,4 +74,3 @@ config :phoenix, :stacktrace_depth, 20
 config :phoenix, :plug_init_mode, :runtime
 
 config :maya, reticulum_base: "https://reticulum.thraxil.org/"
-import_config "dev.secret.exs"
