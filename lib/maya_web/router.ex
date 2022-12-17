@@ -25,7 +25,7 @@ defmodule MayaWeb.Router do
     post "/images/", PageController, :create_image
   end
 
-  scope "/", MayaWeb do
+  scope path: "/", trailing_slash: true, alias: MayaWeb do
     pipe_through :browser
 
     get "/", PageController, :index
