@@ -28,12 +28,15 @@ defmodule MayaWeb.Router do
   scope path: "/", trailing_slash: true, alias: MayaWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
     get "/galleries/:slug", PageController, :show_gallery
 
     get "/images/:slug", PageController, :show_image
   end
 
+  scope "/", MayaWeb do
+    pipe_through :browser    
+    live "/", PageLive
+  end
 
   # Other scopes may use custom stacks.
   # scope "/api", MayaWeb do
