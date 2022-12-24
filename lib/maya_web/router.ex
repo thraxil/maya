@@ -38,6 +38,10 @@ defmodule MayaWeb.Router do
     live "/", PageLive
   end
 
+  scope "/", MayaWeb do
+    get "/feeds/main/", RssController, :index
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", MayaWeb do
   #   pipe_through :api
