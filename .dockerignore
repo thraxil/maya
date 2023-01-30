@@ -34,3 +34,8 @@ priv/static/cache_manifest.json
 assets/node_modules
 
 **/**/*.secret.exs
+db
+.nix-hex
+.nix-mix
+nix
+shell.nix

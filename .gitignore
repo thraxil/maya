@@ -33,3 +33,6 @@ npm-debug.log
 /assets/node_modules/
 
 **/*.secret.exs
+db
+.nix-hex
+.nix-mix
