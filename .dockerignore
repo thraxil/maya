@@ -39,3 +39,4 @@ db
 .nix-mix
 nix
 shell.nix
+.envrc
