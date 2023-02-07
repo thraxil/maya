@@ -8,6 +8,7 @@ buildEnv {
   name = "builder";
   paths = [
     beam.packages.erlangR25.elixir_1_14
+    flyctl
     git
     postgresql
   ];
