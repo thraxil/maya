@@ -53,7 +53,7 @@ defmodule Maya.MixProject do
       {:httpoison, "~> 2.0"},
       {:sentry, "~> 8.0"},
       {:hackney, "~> 1.8"},
-      {:atomex, "0.3.0"}
+      {:atomex, "0.5.1"}
     ]
   end
 
