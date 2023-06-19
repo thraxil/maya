@@ -4,7 +4,7 @@ defmodule Maya.Portfolio.Gallery do
 
   @required_fields [:title]
   @optional_fields [:description]
-  
+
   schema "galleries" do
     field :title, :string, null: false
     field :slug, :string, null: false
@@ -12,7 +12,7 @@ defmodule Maya.Portfolio.Gallery do
     field :ordinality, :integer
 
     many_to_many :images, Maya.Portfolio.Image, join_through: "galleryimages", on_replace: :delete
-    
+
     timestamps()
   end
 

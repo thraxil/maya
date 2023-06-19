@@ -34,7 +34,7 @@ defmodule MayaWeb.Router do
   end
 
   scope "/", MayaWeb do
-    pipe_through :browser    
+    pipe_through :browser
     live "/", PageLive
   end
 
@@ -80,8 +80,8 @@ defmodule MayaWeb.Router do
   scope "/", MayaWeb do
     pipe_through [:browser, :redirect_if_user_is_authenticated]
 
-    get "/users/register", UserRegistrationController, :new
-    post "/users/register", UserRegistrationController, :create
+    # get "/users/register", UserRegistrationController, :new
+    # post "/users/register", UserRegistrationController, :create
     get "/users/log_in", UserSessionController, :new
     post "/users/log_in", UserSessionController, :create
     get "/users/reset_password", UserResetPasswordController, :new

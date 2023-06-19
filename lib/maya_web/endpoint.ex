@@ -45,6 +45,7 @@ defmodule MayaWeb.Endpoint do
     parsers: [:urlencoded, :multipart, :json],
     pass: ["*/*"],
     json_decoder: Phoenix.json_library()
+
   plug Sentry.PlugContext
 
   plug Plug.MethodOverride

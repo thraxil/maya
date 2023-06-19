@@ -11,10 +11,12 @@ defmodule Maya.Portfolio do
   end
 
   def newest_images(images_per_page, page \\ 1) do
-    q = from i in Image,
-      order_by: [desc: :inserted_at],
-      limit: ^images_per_page,
-      offset: ^((page - 1) * images_per_page)
+    q =
+      from i in Image,
+        order_by: [desc: :inserted_at],
+        limit: ^images_per_page,
+        offset: ^((page - 1) * images_per_page)
+
     Repo.all(q)
   end
 
@@ -38,7 +40,7 @@ defmodule Maya.Portfolio do
     |> Image.changeset(attrs)
     |> Repo.insert()
   end
-  
+
   def create_image(attrs \\ %{}) do
     upload = attrs["image"]
     extension = _valid_extension(String.downcase(Path.extname(upload.filename)))
@@ -46,9 +48,14 @@ defmodule Maya.Portfolio do
     url = Application.fetch_env!(:maya, :reticulum_base)
 
     # send it to reticulum
-    form = [{:file, upload.path, {"form-data", [{"name", "image"}, {"filename", "image" <> extension}]}, []}, {"key", key}]
+    form = [
+      {:file, upload.path, {"form-data", [{"name", "image"}, {"filename", "image" <> extension}]},
+       []},
+      {"key", key}
+    ]
+
     {:ok, %HTTPoison.Response{body: body}} = HTTPoison.post(url, {:multipart, form}, [])
-    %{"hash" => hash} = Jason.decode! body
+    %{"hash" => hash} = Jason.decode!(body)
 
     attrs = Map.put(attrs, "ahash", hash)
     attrs = Map.put(attrs, "extension", extension)
@@ -83,27 +90,32 @@ defmodule Maya.Portfolio do
   end
 
   defp _prev_image(image) do
-    q = from i in Image,
-      where: i.inserted_at > ^image.inserted_at,
-      order_by: [asc: :inserted_at],
-      limit: 1
+    q =
+      from i in Image,
+        where: i.inserted_at > ^image.inserted_at,
+        order_by: [asc: :inserted_at],
+        limit: 1
+
     Repo.one(q)
   end
-  
+
   def prev_image(image) do
     case _prev_image(image) do
       nil -> {false, nil}
       i -> {true, i}
     end
   end
+
   defp _next_image(image) do
-    q = from i in Image,
-      where: i.inserted_at < ^image.inserted_at,
-      order_by: [desc: :inserted_at],
-      limit: 1
+    q =
+      from i in Image,
+        where: i.inserted_at < ^image.inserted_at,
+        order_by: [desc: :inserted_at],
+        limit: 1
+
     Repo.one(q)
   end
-  
+
   def next_image(image) do
     case _next_image(image) do
       nil -> {false, nil}

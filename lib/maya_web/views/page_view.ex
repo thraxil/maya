@@ -9,5 +9,4 @@ defmodule MayaWeb.PageView do
   def image_large_url(%Image{ahash: ahash, extension: extension, slug: slug}) do
     "https://d2f33fmhbh7cs9.cloudfront.net/image/" <> ahash <> "/960w/" <> slug <> extension
   end
-
 end

@@ -13,14 +13,17 @@ defmodule Maya.Portfolio.Image do
     field :ahash, :string
     field :extension, :string
 
-    many_to_many :galleries, Maya.Portfolio.Gallery, join_through: "galleryimages", on_replace: :delete
+    many_to_many :galleries, Maya.Portfolio.Gallery,
+      join_through: "galleryimages",
+      on_replace: :delete
+
     timestamps()
   end
 
   def changeset(image, attrs \\ %{}) do
     image
     |> cast(attrs, @required_fields, @optional_fields)
-    |> slugify_title()    
+    |> slugify_title()
     |> validate_required([:title, :slug, :ahash, :extension])
   end
 

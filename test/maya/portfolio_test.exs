@@ -35,7 +35,7 @@ defmodule Maya.PortfolioTest do
     test "count_galleries/0 returns 0 when no galleries" do
       assert Portfolio.count_galleries() == 0
     end
-    
+
     test "list_images/0 returns all images" do
       assert Portfolio.list_images() == []
       image = image_fixture()

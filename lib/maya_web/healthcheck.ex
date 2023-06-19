@@ -15,6 +15,6 @@ defmodule HealthCheck do
     |> send_resp(200, "")
     |> halt()
   end
-  
+
   def call(conn, _opts), do: conn
 end

@@ -45,7 +45,7 @@ defmodule MayaWeb do
   def live_view do
     quote do
       use Phoenix.LiveView,
-        layout: {MayaWeb.LayoutView, "live.html"}
+        layout: {MayaWeb.LayoutView, :live}
 
       unquote(view_helpers())
     end
@@ -54,6 +54,14 @@ defmodule MayaWeb do
   def live_component do
     quote do
       use Phoenix.LiveComponent
+
+      unquote(view_helpers())
+    end
+  end
+
+  def component do
+    quote do
+      use Phoenix.Component
 
       unquote(view_helpers())
     end
@@ -83,6 +91,7 @@ defmodule MayaWeb do
 
       # Import LiveView and .heex helpers (live_render, live_patch, <.form>, etc)
       import Phoenix.LiveView.Helpers
+      import Phoenix.Component
 
       # Import basic rendering functionality (render, render_layout, etc)
       import Phoenix.View
