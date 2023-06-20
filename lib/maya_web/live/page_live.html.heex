@@ -2,11 +2,7 @@
 <p>Myopica is the art of <a href="mailto:anders+myopica@thraxil.org">Anders Pearson</a>.</p>
 
 <%= for image <- @images do %>
-    <div class="image">
-      <%= link to: Routes.page_path(@socket, :show_image, image.slug) <> "#img1" do %>
-      <%= img_tag(image_thumb_url(image), alt: image.title, height: 200, width: 200) %>
-      <% end %>
-    </div>
+    <.image image={image} />
 <% end %>
 
 <br style="clear: both" />
