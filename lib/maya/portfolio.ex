@@ -1,5 +1,4 @@
 defmodule Maya.Portfolio do
-  import Ecto.Changeset, only: [change: 2]
   import Ecto.Query, warn: false
   alias Maya.Repo
 
