@@ -1,17 +1,13 @@
 <p>Myopica is the art of <a href="mailto:anders+myopica@thraxil.org">Anders Pearson</a>.</p>
 
 <%= for image <- @images do %>
-    <div class="image">
-      <%= link to: Routes.page_path(@conn, :show_image, image.slug) <> "#img1" do %>
-      <%= img_tag(image_thumb_url(image), alt: image.title, height: 200, width: 200) %>
-      <% end %>
-    </div>
+    <.image image={image} />
 <% end %>
 
 <br style="clear: both" />
-<%= if @has_prev do %><%= link "<< prev", to: Routes.page_path(@conn, :index, page: @prev_page) %><% else %>&lt;&lt; prev<% end %>
+<%= if @has_prev do %><.link navigate={Routes.page_path(@conn, :index, page: @prev_page)}>&lt;&lt; prev</.link><% else %>&lt;&lt; prev<% end %>
 [page <%= @page %>]
-<%= if @has_next do %><%= link "next >>", to: Routes.page_path(@conn, :index, page: @next_page) %><% else %>next &gt;&gt;<% end %>
+<%= if @has_next do %><.link navigate={Routes.page_path(@conn, :index, page: @next_page)}>next &gt;&gt;</.link><% else %>next &gt;&gt;<% end %>
 
 <script type="text/javascript">
 var preloader = function () {
