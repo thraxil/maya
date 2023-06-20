@@ -1,32 +1,40 @@
 <p>Myopica is the art of <a href="mailto:anders+myopica@thraxil.org">Anders Pearson</a>.</p>
 
 <%= for image <- @images do %>
-    <.image image={image} />
+  <.image image={image} />
 <% end %>
 
 <br style="clear: both" />
-<%= if @has_prev do %><.link navigate={Routes.page_path(@conn, :index, page: @prev_page)}>&lt;&lt; prev</.link><% else %>&lt;&lt; prev<% end %>
+<%= if @has_prev do %>
+  <.link navigate={Routes.page_path(@conn, :index, page: @prev_page)}>&lt;&lt; prev</.link>
+<% else %>
+  &lt;&lt; prev
+<% end %>
 [page <%= @page %>]
-<%= if @has_next do %><.link navigate={Routes.page_path(@conn, :index, page: @next_page)}>next &gt;&gt;</.link><% else %>next &gt;&gt;<% end %>
+<%= if @has_next do %>
+  <.link navigate={Routes.page_path(@conn, :index, page: @next_page)}>next &gt;&gt;</.link>
+<% else %>
+  next &gt;&gt;
+<% end %>
 
 <script type="text/javascript">
-var preloader = function () {
-        <%= for {image, idx} <- Enum.with_index(@images) do %>
-var pre<%= idx %> = new Image();
-pre<%= idx %>.src = "<%= image_large_url(image) %>";
-<% end %>
+  var preloader = function () {
+          <%= for {image, idx} <- Enum.with_index(@images) do %>
+  var pre<%= idx %> = new Image();
+  pre<%= idx %>.src = "<%= image_large_url(image) %>";
+  <% end %>
 
-        <%= for {image, idx} <- Enum.with_index(@next_page_images) do %>
-var next_pre<%= idx %> = new Image();
-next_pre<%= idx %>.src = "<%= image_thumb_url(image) %>";
-<% end %>
+          <%= for {image, idx} <- Enum.with_index(@next_page_images) do %>
+  var next_pre<%= idx %> = new Image();
+  next_pre<%= idx %>.src = "<%= image_thumb_url(image) %>";
+  <% end %>
 
-        <%= for {image, idx} <- Enum.with_index(@prev_page_images) do %>
-var prev_pre<%= idx %> = new Image();
-prev_pre<%= idx %>.src = "<%= image_thumb_url(image) %>";
-<% end %>
+          <%= for {image, idx} <- Enum.with_index(@prev_page_images) do %>
+  var prev_pre<%= idx %> = new Image();
+  prev_pre<%= idx %>.src = "<%= image_thumb_url(image) %>";
+  <% end %>
 
-};
+  };
 
-document.onload = preloader();
+  document.onload = preloader();
 </script>

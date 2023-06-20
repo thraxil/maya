@@ -1,6 +1,12 @@
 <section>
-    <span class="left"><%= if @has_prev do %><.link navigate={Routes.page_path(@conn, :show_image, @prev_image.slug)}>&lt;&lt; prev</.link><% else %>&lt;&lt; prev<% end %></span>
-    <span class="right"><%= if @has_next do %><.link navigate={Routes.page_path(@conn, :show_image, @next_image.slug)}>next &gt;&gt;</.link><% else %>next &gt;&gt;<% end %></span>
+    <span class="left"><%= if @has_prev do %>
+        <%= link("<< prev", to: Routes.page_path(@conn, :show_image, @prev_image.slug)) %>
+    <% else %>&lt;&lt; prev<% end %>
+    </span>
+    <span class="right"><%= if @has_next do %>
+        <%= link("next >>", to: Routes.page_path(@conn, :show_image, @next_image.slug)) %>
+    <% else %>next &gt;&gt;<% end %>
+    </span>
 </section>
 <br style="clear: both" />
 
@@ -20,13 +26,19 @@
 </a>
 
 <span class="invisible" itemprop="creator" itemscope
-	     itemtype="http://schema.org/Person">
+      itemtype="http://schema.org/Person">
     <span itemprop="name">
 	Anders Pearson
     </span>
 </span>
 
 <section>
-    <span class="left"><%= if @has_prev do %><.link navigate={Routes.page_path(@conn, :show_image, @prev_image.slug)}>&lt;&lt; prev</.link><% else %>&lt;&lt; prev<% end %></span>
-    <span class="right"><%= if @has_next do %><.link navigate={Routes.page_path(@conn, :show_image, @next_image.slug)}>next &gt;&gt;</.link><% else %>next &gt;&gt;<% end %></span>
+    <span class="left"><%= if @has_prev do %>
+        <%= link("<< prev", to: Routes.page_path(@conn, :show_image, @prev_image.slug)) %>
+    <% else %>&lt;&lt; prev<% end %>
+    </span>
+    <span class="right"><%= if @has_next do %>
+        <%= link("next >>", to: Routes.page_path(@conn, :show_image, @next_image.slug)) %>
+    <% else %>next &gt;&gt;<% end %>
+    </span>
 </section>

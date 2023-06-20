@@ -28,6 +28,8 @@ defmodule MayaWeb.ConnCase do
 
       # The default endpoint for testing
       @endpoint MayaWeb.Endpoint
+
+      use MayaWeb, :verified_routes
     end
   end
 

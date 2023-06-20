@@ -1,28 +1,33 @@
-
 <p>Myopica is the art of <a href="mailto:anders+myopica@thraxil.org">Anders Pearson</a>.</p>
 
 <%= for image <- @images do %>
-    <.image image={image} />
+  <.image image={image} />
 <% end %>
 
 <br style="clear: both" />
 
-<%= if @has_prev do %><%= live_patch "<< prev", to: Routes.live_path(@socket, MayaWeb.PageLive, %{page: @prev_page}) %><% else %>&lt;&lt; prev<% end %>
+<%= if @has_prev do %>
+  <%= live_patch("<< prev", to: Routes.live_path(@socket, MayaWeb.PageLive, %{page: @prev_page})) %>
+<% else %>
+  &lt;&lt; prev
+<% end %>
 [page <%= @page %>]
-<%= if @has_next do %><%= live_patch "next >>", to: Routes.live_path(@socket, MayaWeb.PageLive, %{page: @next_page}) %><% else %>next &gt;&gt;<% end %>
-
-
+<%= if @has_next do %>
+  <%= live_patch("next >>", to: Routes.live_path(@socket, MayaWeb.PageLive, %{page: @next_page})) %>
+<% else %>
+  next &gt;&gt;
+<% end %>
 
 <div style="display:none">
-  <%= for image <- @images do %>  
-  <%= img_tag(image_large_url(image), alt: image.title) %>
+  <%= for image <- @images do %>
+    <%= img_tag(image_large_url(image), alt: image.title) %>
   <% end %>
 
   <%= for image <- @next_page_images do %>
-  <%= img_tag(image_thumb_url(image), alt: image.title) %>
+    <%= img_tag(image_thumb_url(image), alt: image.title) %>
   <% end %>
 
   <%= for image <- @prev_page_images do %>
-  <%= img_tag(image_thumb_url(image), alt: image.title) %>
+    <%= img_tag(image_thumb_url(image), alt: image.title) %>
   <% end %>
 </div>

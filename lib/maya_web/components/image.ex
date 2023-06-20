@@ -1,7 +1,7 @@
 defmodule MayaWeb.Components.Image do
   use Phoenix.Component
   alias MayaWeb.Router.Helpers, as: Routes
-  import Phoenix.HTML.{Link, Tag}
+  import Phoenix.HTML.Tag
   alias Maya.Portfolio.Image
 
   defp image_thumb_url(%Image{ahash: ahash, extension: extension, slug: slug}) do
@@ -16,7 +16,7 @@ defmodule MayaWeb.Components.Image do
     ~H"""
     <div class="image">
       <.link navigate={Routes.page_path(MayaWeb.Endpoint, :show_image, @image.slug) <> "#img1"}>
-      <%= img_tag(image_thumb_url(@image), alt: @image.title, height: @height, width: @width) %>
+        <%= img_tag(image_thumb_url(@image), alt: @image.title, height: @height, width: @width) %>
       </.link>
     </div>
     """
