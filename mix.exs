@@ -52,7 +52,7 @@ defmodule Maya.MixProject do
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
       {:httpoison, "~> 2.0"},
-      {:sentry, "~> 8.0"},
+      {:sentry, "~> 9.0"},
       {:hackney, "~> 1.8"},
       {:atomex, "0.5.1"}
     ]
