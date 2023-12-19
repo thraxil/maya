@@ -63,14 +63,14 @@ if config_env() == :prod do
     ],
     secret_key_base: secret_key_base
 
-  reticulum_key_base =
+  reticulum_key =
     System.get_env("RETICULUM_KEY") ||
       raise """
             environment variable RETICULUM_KEY is missing
       """
 
   config :maya,
-    reticulum_key: reticulum_key_base
+    reticulum_key: reticulum_key
 
   # ## Using releases
   #

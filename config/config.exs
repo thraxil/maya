@@ -59,6 +59,7 @@ config :sentry,
   },
   included_environments: [:prod]
 
+config :maya, reticulum_base: "https://reticulum.thraxil.org/"
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
