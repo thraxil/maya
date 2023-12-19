@@ -78,7 +78,7 @@ defmodule MayaWeb.PageController do
       {:ok, _image} ->
         conn
         |> put_flash(:info, "image created")
-        |> redirect(to: Routes.page_path(conn, :index))
+        |> redirect(to: ~p"/")
 
       {:error, changeset} ->
         render(conn, "new_image.html", changeset: changeset)
