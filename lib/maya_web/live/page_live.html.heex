@@ -7,13 +7,13 @@
 <br style="clear: both" />
 
 <%= if @has_prev do %>
-  <%= live_patch("<< prev", to: Routes.live_path(@socket, MayaWeb.PageLive, %{page: @prev_page})) %>
+  <.link patch={~p"/?page=#{@prev_page}"}>&lt;&lt; prev</.link>
 <% else %>
   &lt;&lt; prev
 <% end %>
 [page <%= @page %>]
 <%= if @has_next do %>
-  <%= live_patch("next >>", to: Routes.live_path(@socket, MayaWeb.PageLive, %{page: @next_page})) %>
+  <.link patch={~p"/?page=#{@next_page}"}>next &gt;&gt;</.link>
 <% else %>
   next &gt;&gt;
 <% end %>
