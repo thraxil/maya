@@ -1,7 +1,9 @@
 defmodule MayaWeb.Components.Image do
   use Phoenix.Component
   alias MayaWeb.Router.Helpers, as: Routes
-  import Phoenix.HTML.Tag
+
+  use PhoenixHTMLHelpers
+
   alias Maya.Portfolio.Image
 
   defp image_thumb_url(%Image{ahash: ahash, extension: extension, slug: slug}) do
