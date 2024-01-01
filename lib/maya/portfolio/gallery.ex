@@ -6,8 +6,8 @@ defmodule Maya.Portfolio.Gallery do
   @optional_fields [:description]
 
   schema "galleries" do
-    field :title, :string, null: false
-    field :slug, :string, null: false
+    field :title, :string
+    field :slug, :string
     field :description, :string
     field :ordinality, :integer
 
