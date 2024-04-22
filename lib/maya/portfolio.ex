@@ -85,7 +85,8 @@ defmodule Maya.Portfolio do
   end
 
   def get_image_by_slug!(slug) do
-    Repo.get_by!(Image, slug: slug)
+    q = from i in Image, where: i.slug == ^slug, limit: 1
+    Repo.one(q)
   end
 
   defp _prev_image(image) do
