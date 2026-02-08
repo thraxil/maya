@@ -12,7 +12,7 @@ defmodule MayaWeb.Plugs.CacheStaticAssets do
   end
 
   defp is_digested_asset?(path) do
-    if Mix.env() == :prod do
+    if Application.get_env(:maya, :env) == :prod do
       digested_paths = 
         case :persistent_term.get(:digested_paths, nil) do
           nil ->
