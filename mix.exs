@@ -10,20 +10,7 @@ defmodule Maya.MixProject do
       compilers: Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps(),
-      releases: [
-        maya: [
-          steps: [:assemble, &copy_static_assets/1]
-        ]
-      ]
-    ]
-  end
-
-  defp copy_static_assets(release) do
-    File.mkdir_p!(Path.join([release.path, "priv/static"]))
-    File.cp_r!("priv/static", Path.join([release.path, "priv/static"]))
-    release
-  end
+      deps: deps()
 
   # Configuration for the OTP application.
   #
