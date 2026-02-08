@@ -20,7 +20,7 @@ defmodule Maya.MixProject do
   end
 
   defp copy_static_assets(release) do
-    File.cp_r!("priv/static", Path.join([release.path, "priv/static"))
+    File.cp_r!("priv/static", Path.join([release.path, "priv/static"]))
     release
   end
 
