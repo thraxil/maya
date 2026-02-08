@@ -8,7 +8,7 @@ defmodule Maya.Release do
   def wait_for_db do
     IO.puts("Waiting for database to be available...")
 
-    case {:persistent_term.get(:waited_for_db, false), System.get_env("RELEASE_COMMAND") do
+    case {:persistent_term.get(:waited_for_db, false), System.get_env("RELEASE_COMMAND")} do
       {true, _} ->
         :ok
 
