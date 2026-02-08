@@ -21,8 +21,13 @@ defmodule MayaWeb.Endpoint do
   # when deploying your static files in production.
 
 
-  # Code reloading can be explicitly enabled under the
-  # :code_reloader configuration of your endpoint.
+  plug MayaWeb.Plugs.CacheStaticAssets
+
+  plug Plug.Static,
+    at: "/",
+    from: :maya,
+    gzip: true,
+    only: MayaWeb.static_paths()
   if code_reloading? do
     socket "/phoenix/live_reload/socket", Phoenix.LiveReloader.Socket
     plug Phoenix.LiveReloader

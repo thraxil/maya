@@ -43,6 +43,3 @@ swap_size_mb = 512
     restart_limit = 0
     timeout = "2s"
 
-[[statics]]
-  guest_path = "/app/priv/static"
-  url_prefix = "/"
