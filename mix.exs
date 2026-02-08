@@ -13,7 +13,8 @@ defmodule Maya.MixProject do
       deps: deps(),
       releases: [
         maya: [
-          include_paths: ["priv/static"]\n        ]
+          include_paths: ["priv/static"]
+        ]
       ]
     ]
   end
