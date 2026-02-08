@@ -10,12 +10,7 @@ defmodule Maya.MixProject do
       compilers: Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps(),
-      releases: [
-        maya: [
-          include_paths: ["priv/static"]
-        ]
-      ]
+      deps: deps()
     ]
   end
 
