@@ -22,7 +22,11 @@ defmodule MayaWeb.Endpoint do
   plug Plug.Static,
     at: "/",
     from: :maya,
-    gzip: false,
+    gzip: true,
+    cache_control_for_vsn: [
+      "cache-control": "max-age=31536000, public",
+      "x-frame-options": "SAMEORIGIN"
+    ],
     only: MayaWeb.static_paths()
 
   # Code reloading can be explicitly enabled under the
