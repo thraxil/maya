@@ -13,10 +13,15 @@ defmodule Maya.MixProject do
       deps: deps(),
       releases: [
         maya: [
-          include_paths: ["priv/static"]
+          steps: [:assemble, &copy_static_assets/1]
         ]
       ]
     ]
+  end
+
+  defp copy_static_assets(release) do
+    File.cp_r!("priv/static", Path.join([release.path, "priv/static"))
+    release
   end
 
   # Configuration for the OTP application.
