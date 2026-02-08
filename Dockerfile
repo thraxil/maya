@@ -63,7 +63,6 @@ COPY config/runtime.exs config/
 
 COPY rel rel
 RUN mix release
-RUN ls -l _build/prod/rel/maya/priv/static
 
 # start a new build stage so that the final image will only contain
 # the compiled release and other runtime necessities
