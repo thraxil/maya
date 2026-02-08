@@ -23,6 +23,10 @@ defmodule Maya.Release do
   def migrate do
     IO.puts("Running migrations...")
 
+    # Start the Ecto repo
+    {:ok, _} = Application.ensure_all_started(:ecto_sql)
+    {:ok, _} = Maya.Repo.start_link(pool_size: 2)
+
     Ecto.Migrator.run(Maya.Repo, :up, all: true)
 
     IO.puts("Migrations complete.")
