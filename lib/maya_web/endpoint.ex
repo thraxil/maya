@@ -23,10 +23,10 @@ defmodule MayaWeb.Endpoint do
     at: "/",
     from: :maya,
     gzip: true,
-    cache_control_for_vsn: [
-      "cache-control": "max-age=31536000, public",
-      "x-frame-options": "SAMEORIGIN"
-    ]
+    cache_control_for_vsn: %{
+      "cache-control" => "max-age=31536000, public",
+      "x-frame-options" => "SAMEORIGIN"
+    }
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
