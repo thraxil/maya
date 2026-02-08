@@ -20,6 +20,14 @@ defmodule Maya.Release do
     end
   end
 
+  def migrate do
+    IO.puts("Running migrations...")
+
+    Ecto.Migrator.run(Maya.Repo, :up, all: true)
+
+    IO.puts("Migrations complete.")
+  end
+
   defp wait_for_db(retries) when retries < 10 do
     case @repo.start_link(pool_size: 1) do
       {:ok, _pid} ->
