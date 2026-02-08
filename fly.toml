@@ -7,9 +7,10 @@ processes = []
 swap_size_mb = 512
 
 [deploy]
-  release_command = "/app/bin/migrate"
+  release_command = "/app/bin/check_db_and_migrate"
 
 [env]
+  RELEASE_COMMAND = "true"
   PHX_HOST = "myopica.org"
   PORT = "8080"
 

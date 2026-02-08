@@ -1,28 +1,40 @@
 defmodule Maya.Release do
   @moduledoc """
-  Used for executing DB release tasks when run in production without Mix
-  installed.
+  A module for release-related tasks.
   """
-  @app :maya
 
-  def migrate do
-    load_app()
+  @repo Maya.Repo
 
-    for repo <- repos() do
-      {:ok, _, _} = Ecto.Migrator.with_repo(repo, &Ecto.Migrator.run(&1, :up, all: true))
+  def wait_for_db do
+    IO.puts("Waiting for database to be available...")
+
+    case {:persistent_term.get(:waited_for_db, false), System.get_env("RELEASE_COMMAND") do
+      {true, _} ->
+        :ok
+
+      {_, "true"} ->
+        wait_for_db(0)
+
+      {_, _} ->
+        :ok
     end
   end
 
-  def rollback(repo, version) do
-    load_app()
-    {:ok, _, _} = Ecto.Migrator.with_repo(repo, &Ecto.Migrator.run(&1, :down, to: version))
+  defp wait_for_db(retries) when retries < 10 do
+    case @repo.start_link(pool_size: 1) do
+      {:ok, _pid} ->
+        :persistent_term.put(:waited_for_db, true)
+        :ok
+
+      {:error, _} ->
+        IO.puts("Database not available, waiting...")
+        :timer.sleep(500)
+        wait_for_db(retries + 1)
+    end
   end
 
-  defp repos do
-    Application.fetch_env!(@app, :ecto_repos)
-  end
-
-  defp load_app do
-    Application.load(@app)
+  defp wait_for_db(_retries) do
+    IO.puts("Database not available after 10 retries, giving up.")
+    System.stop(1)
   end
 end

@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Wait for the database to be available
+/app/bin/eval "Maya.Release.wait_for_db()"
+
+# Run the migrations
+/app/bin/migrate
