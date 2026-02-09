@@ -46,7 +46,7 @@ defmodule Maya.MixProject do
       {:floki, ">= 0.30.0", only: :test},
       {:phoenix_live_dashboard, "~> 0.8"},
       {:esbuild, "~> 0.4", runtime: Mix.env() == :dev},
-      {:swoosh, "~> 1.20.1"},
+      {:swoosh, "~> 1.21.0"},
       {:telemetry_metrics, "~> 1.0"},
       {:telemetry_poller, "~> 1.0"},
       {:gettext, "~> 1.0"},
