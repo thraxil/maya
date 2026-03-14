@@ -1,5 +1,10 @@
 #!/bin/sh
 
+# Use migration URL if available
+if [ -n "$DATABASE_URL_MIGRATION" ]; then
+  export DATABASE_URL=$DATABASE_URL_MIGRATION
+fi
+
 # Wait for the database to be available
 /app/bin/maya eval "Maya.Release.wait_for_db()"
 
