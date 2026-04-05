@@ -21,7 +21,7 @@ defmodule MayaWeb do
 
   def controller do
     quote do
-      use Phoenix.Controller, namespace: MayaWeb
+      use Phoenix.Controller, formats: [html: "View", json: "View"]
 
       import Plug.Conn
       import MayaWeb.Gettext
@@ -34,8 +34,7 @@ defmodule MayaWeb do
   def view do
     quote do
       use Phoenix.View,
-        root: "lib/maya_web/templates",
-        namespace: MayaWeb
+        root: "lib/maya_web/templates"
 
       # Import convenience functions from controllers
       import Phoenix.Controller,
