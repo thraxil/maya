@@ -36,11 +36,11 @@ defmodule MayaWeb.RssController do
          inserted_at: inserted_at
        }) do
     Entry.new(
-      Routes.page_url(conn, :show_image, slug),
+      Routes.page_url(conn, :index) <> "images/#{slug}",
       DateTime.from_naive!(inserted_at, "Etc/UTC"),
       title
     )
-    |> Entry.link(Routes.page_url(conn, :show_image, slug))
+    |> Entry.link(Routes.page_url(conn, :index) <> "images/#{slug}")
     |> Entry.author(@author)
     |> Entry.content(
       "<img src=\"https://d2f33fmhbh7cs9.cloudfront.net/image/" <>

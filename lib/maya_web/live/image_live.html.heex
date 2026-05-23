@@ -1,0 +1,30 @@
+<div class="image-viewer" phx-window-keyup="keyup">
+  <div class="image-viewer-header">
+    <.link navigate="/" class="back-link">&larr; Back to Gallery</.link>
+  </div>
+
+  <div class="image-container">
+    <%= img_tag(image_large_url(@image), alt: @image.title, class: "main-image") %>
+  </div>
+
+  <div class="image-viewer-footer">
+    <div class="nav-left">
+      <%= if @has_prev do %>
+        <.link patch={"/images/#{@prev_image.slug}"} class="nav-link">&lt;&lt; Prev</.link>
+      <% end %>
+    </div>
+    
+    <div class="image-info">
+      <h2 class="image-title"><%= @image.title %></h2>
+      <%= if @image.medium do %>
+        <p class="image-medium"><%= @image.medium %></p>
+      <% end %>
+    </div>
+
+    <div class="nav-right">
+      <%= if @has_next do %>
+        <.link patch={"/images/#{@next_image.slug}"} class="nav-link">Next &gt;&gt;</.link>
+      <% end %>
+    </div>
+  </div>
+</div>

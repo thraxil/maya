@@ -1,22 +1,24 @@
 <p>Myopica is the art of <a href="mailto:anders+myopica@thraxil.org">Anders Pearson</a>.</p>
 
-<%= for image <- @images do %>
-  <.image image={image} />
-<% end %>
+<div class="gallery-grid">
+  <%= for image <- @images do %>
+    <.image image={image} />
+  <% end %>
+</div>
 
-<br style="clear: both" />
-
-<%= if @has_prev do %>
-  <.link patch={~p"/?page=#{@prev_page}"}>&lt;&lt; prev</.link>
-<% else %>
-  &lt;&lt; prev
-<% end %>
-[page <%= @page %>]
-<%= if @has_next do %>
-  <.link patch={~p"/?page=#{@next_page}"}>next &gt;&gt;</.link>
-<% else %>
-  next &gt;&gt;
-<% end %>
+<div class="pagination">
+  <%= if @has_prev do %>
+    <.link patch={"/?page=#{@prev_page}"}>&lt;&lt; prev</.link>
+  <% else %>
+    <span class="disabled">&lt;&lt; prev</span>
+  <% end %>
+  <span class="page-num">[page <%= @page %>]</span>
+  <%= if @has_next do %>
+    <.link patch={"/?page=#{@next_page}"}>next &gt;&gt;</.link>
+  <% else %>
+    <span class="disabled">next &gt;&gt;</span>
+  <% end %>
+</div>
 
 <div style="display:none">
   <%= for image <- @images do %>

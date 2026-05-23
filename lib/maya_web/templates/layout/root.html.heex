@@ -24,28 +24,28 @@
     />
   </head>
   <body>
-    <header>
-      <h1 id="masthead"><a href="/">myopica</a></h1>
+    <header class="site-header">
+      <h1 class="site-title"><a href="/">myopica</a></h1>
     </header>
     <%= @inner_content %>
-    <section class="container">
-      <nav>
-        <ul>
-          <%= if @current_user do %>
-            <li><a href="/images/new">+</a></li>
-          <% end %>
-        </ul>
-        <%= render("_user_menu.html", assigns) %>
-      </nav>
-    </section>
-    <p>
-      <a rel="license" href="http://creativecommons.org/publicdomain/zero/1.0/">
-        <img
-          src="https://licensebuttons.net/p/zero/1.0/80x15.png"
-          style="border-style: none;"
-          alt="CC0"
-        />
-      </a>
-    </p>
+    <footer class="site-footer">
+      <%= if @current_user do %>
+        <nav>
+          <ul class="admin-nav">
+            <li><a href="/images/new">Add Image</a></li>
+          </ul>
+          <%= render("_user_menu.html", assigns) %>
+        </nav>
+      <% end %>
+      <p>
+        <a rel="license" href="http://creativecommons.org/publicdomain/zero/1.0/">
+          <img
+            src="https://licensebuttons.net/p/zero/1.0/80x15.png"
+            style="border-style: none;"
+            alt="CC0"
+          />
+        </a>
+      </p>
+    </footer>
   </body>
 </html>

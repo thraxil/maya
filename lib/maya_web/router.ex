@@ -30,7 +30,7 @@ defmodule MayaWeb.Router do
 
     get "/galleries/:slug", PageController, :show_gallery
 
-    get "/images/:slug", PageController, :show_image
+    live "/images/:slug", ImageLive
   end
 
   scope "/", MayaWeb do

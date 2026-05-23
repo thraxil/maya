@@ -53,23 +53,6 @@ defmodule MayaWeb.PageController do
     end
   end
 
-  def show_image(conn, %{"slug" => slug}) do
-    image = Portfolio.get_image_by_slug!(slug)
-    {has_prev, prev_image} = Portfolio.prev_image(image)
-    {has_next, next_image} = Portfolio.next_image(image)
-
-    conn = put_resp_header(conn, "cache-control", "public, max-age=86400")
-
-    render(conn, "image.html",
-      page_title: image.title,
-      image: image,
-      has_prev: has_prev,
-      prev_image: prev_image,
-      has_next: has_next,
-      next_image: next_image
-    )
-  end
-
   def new_image(conn, _params) do
     changeset = Image.changeset(%Image{})
     render(conn, "new_image.html", changeset: changeset)
