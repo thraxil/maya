@@ -54,6 +54,7 @@ config :sentry,
   environment_name: Mix.env(),
   enable_source_code_context: true,
   root_source_code_paths: [File.cwd!()],
+  client: Sentry.HackneyClient,
   tags: %{
     env: "production"
   }
